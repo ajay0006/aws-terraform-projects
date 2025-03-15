@@ -10,7 +10,7 @@ terraform {
 
 # Provider Block
 provider "aws" {
-  profile = "adminTr" # AWS Credentials Profile configured on your local desktop terminal  $HOME/.aws/credentials
+  profile = "adminTr" # using AWS SSO so the profile name in the config file for aws cli is what will be used
   region  = "us-east-1"
 }
 
@@ -21,5 +21,8 @@ resource "aws_instance" "ec2demo" {
   metadata_options {
     http_endpoint = "enabled"
     http_tokens = "required"
+  }
+  tags = {
+    Name = "ec2demo" # specifies the name of th ec2 instance 
   }
 }
