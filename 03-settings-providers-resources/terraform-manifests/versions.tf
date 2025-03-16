@@ -9,18 +9,18 @@ terraform {
     }
   }
   # Adding Backend as S3 for Remote State Storage with State Locking, meaniong i am storing the .tfstate files in the s3 bucket
-  backend "s3" {
-    bucket = "terraform-tf-files"
-    key    = "dev2/terraform.tfstate"
-    region = "us-east-1"  
+  # backend "s3" {
+  #   bucket = "terraform-tf-files"
+  #   key    = "dev2/terraform.tfstate"
+  #   region = "us-east-1" 
+  #   profile = "adminTr" 
 
-    # For State Locking
-    dynamodb_table = "terraform-dev-state-table"
-  }
+  #   # For State Locking
+  #   use_lockfile = true
+  # }
 }
 # provider block
 provider "aws" {
   profile = "adminTr"
-  region = "us-east-1"
-  
+  region = "us-east-1"  
 }
